@@ -241,8 +241,6 @@ def recommendation():
 
     # Create dataframe containing the 3 most similar burgers to our input parameters
     user_prediction_burgers = cosine_prediction_df.nlargest(3, 'user')
-    
-    st.write(user_prediction_burgers)
 
     # Get the pizza names and cosine similarity scores
     global burger_names, bl, pl
