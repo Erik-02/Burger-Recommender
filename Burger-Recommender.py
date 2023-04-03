@@ -247,8 +247,8 @@ def recommendation():
     # Names of recommended burgers
     burger_names = user_prediction_burgers.index.tolist()
     # Get link to recipe and image of burger
-    bl = burgers_df['link'].loc[[burger_names]].values.ravel().tolist()
-    pl = burgers_df['photo_link'].loc[[burger_names]].values.ravel().tolist()
+    bl = burgers_df['link'].loc[burger_names].values.ravel().tolist()
+    pl = burgers_df['photo_link'].loc[burger_names].values.ravel().tolist()
 
 
 
