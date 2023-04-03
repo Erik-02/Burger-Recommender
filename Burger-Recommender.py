@@ -3,8 +3,7 @@ import pandas as pd
 from sklearn.metrics.pairwise import cosine_similarity
 
 # Load data from local file
-burgers_df = pd.read_csv('Burger data.csv')
-burgers_df.set_index('Burgers', inplace=True)
+#burgers_df = pd.read_csv('Burger data.csv')
 
 # Load in Burger data
 @st.cache_data
@@ -12,8 +11,8 @@ def load_data(url):
     df = pd.read_csv(url)
     return df
 
-#df = load_data("https://github.com/")
-
+burgers_df = load_data("https://raw.githubusercontent.com/Erik-02/Burger-Recommender/main/Burger%20data.csv")
+burgers_df.set_index('Burgers', inplace=True)
 
 # Setting the global state of the page to go to
 if 'pages' not in st.session_state: st.session_state.pages = 0
