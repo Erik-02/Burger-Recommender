@@ -238,6 +238,10 @@ def recommendation():
     # It will calculate scores for a user in comparison to all of the burgers
     cosine_prediction_df = cosine_similarity(prediction_df)
     cosine_prediction_df = pd.DataFrame(cosine_prediction_df, index=prediction_df.index, columns=prediction_df.index)[:-1]
+    
+    # Add links
+    cosine_prediction_df['link'] = burgers_df['link']
+    cosine_prediction_df['plinks'] = burgers_df['photo_link']
 
     # Create dataframe containing the 3 most similar burgers to our input parameters
     user_prediction_burgers = cosine_prediction_df.nlargest(3, 'user')
@@ -247,8 +251,8 @@ def recommendation():
     # Names of recommended burgers
     burger_names = user_prediction_burgers.index.tolist()
     # Get link to recipe and image of burger
-    bl = burgers_df['link'].values.ravel().tolist()
-    pl = burgers_df['photo_link'].values.ravel().tolist()
+    bl = cosine_prediction_df['link'].values.ravel().tolist()
+    pl = cosine_prediction_df['plinks'].values.ravel().tolist()
 
 
 
