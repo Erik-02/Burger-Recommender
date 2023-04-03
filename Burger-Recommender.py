@@ -240,8 +240,8 @@ def recommendation():
     cosine_prediction_df = pd.DataFrame(cosine_prediction_df, index=prediction_df.index, columns=prediction_df.index)[:-1]
     
     # Add links
-    cosine_prediction_df['link'] = burgers_df['link']
-    cosine_prediction_df['plinks'] = burgers_df['photo_link']
+    cosine_prediction_df['link'] = burgers_df['link'].copy()
+    cosine_prediction_df['plinks'] = burgers_df['photo_link'].copy()
 
     # Create dataframe containing the 3 most similar burgers to our input parameters
     user_prediction_burgers = cosine_prediction_df.nlargest(3, 'user')
